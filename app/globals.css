@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-dark: #d97706;
+  --navy-deep: #020817;
+  --navy-dark: #0a1628;
+  --navy-mid: #0f2040;
+  --glass-bg: rgba(15, 32, 64, 0.6);
+  --glass-border: rgba(251, 191, 36, 0.15);
+  --glass-border-hover: rgba(251, 191, 36, 0.5);
+}
+
+/* Custom cursor */
+* {
+  cursor: none !important;
+}
+
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Selection */
+::selection {
+  background: rgba(251, 191, 36, 0.25);
+  color: #fbbf24;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #020817;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+  border-radius: 2px;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-hover:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.1), inset 0 0 30px rgba(251, 191, 36, 0.03);
+}
+
+/* Gold glow text */
+.gold-glow {
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.5), 0 0 40px rgba(251, 191, 36, 0.2);
+}
+
+/* Gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section fade-in base */
+.section-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Timeline connector */
+.timeline-line {
+  background: linear-gradient(180deg, transparent, #f59e0b 20%, #f59e0b 80%, transparent);
+}
+
+/* Particle canvas fix */
+#tsparticles {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Shimmer animation for skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Cursor ring animation */
+@keyframes cursorPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* Smooth section transitions */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Terminal styles */
+.terminal-text {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Project card tilt fix */
+.project-tilt-wrapper {
+  transform-style: preserve-3d;
+}
+
+/* Input focus ring */
+.input-gold:focus {
+  outline: none;
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1), 0 0 20px rgba(251, 191, 36, 0.15);
+}
+
+/* Noise texture overlay */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+  }
+}
