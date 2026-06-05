@@ -8,7 +8,7 @@ export const portfolioData = {
   },
   contact: {
     phone: "+201015547839",
-    email: "mhmdabwslym328@gmail.com",
+    email: "engwagehii@gmail.com",
     linkedin: "https://www.linkedin.com/in/wagehii",
     github: "https://github.com/wagehii",
     codewars: "https://www.codewars.com/users/wagehii"
