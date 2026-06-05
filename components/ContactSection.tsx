@@ -49,14 +49,34 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate form submission
-    setTimeout(() => {
+
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append("access_key", "f1794c4f-abb4-4b3b-b281-6f28ec2adc42");
+    formDataToSubmit.append("name", formData.name);
+    formDataToSubmit.append("email", formData.email);
+    formDataToSubmit.append("message", formData.message);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSubmit,
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        alert("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      alert("Error connecting to the server. Please check your connection.");
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 1200);
+    }
   };
 
   return (
@@ -120,7 +140,7 @@ export default function ContactSection() {
                   <h4 className="font-display font-semibold text-white text-lg mb-2">Message Sent!</h4>
                   <p className="text-gray-400 text-sm">I'll get back to you within 24 hours.</p>
                   <button
-                    onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", message: "" }); }}
+                    onClick={() => setSubmitted(false)}
                     className="mt-6 text-xs text-amber-400/70 hover:text-amber-400 transition-colors font-mono"
                   >
                     Send another →
