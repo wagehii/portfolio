@@ -8,7 +8,7 @@ export const metadata = {
   keywords: 'محمد وجيه, بورتفوليو محمد وجيه, محمد وجيه ابو سليم, Mohamed Wageh, Mohamed Wageh Abou Selim, wagehii, Zain, زين, Mohamed Wageh Portfolio, Machine Learning Engineer Egypt, Data Scientist, مهندس ذكاء اصطناعي, عالم بيانات, مهندس تعلم آلة, مطور بايثون, Mansoura University, جامعة المنصورة, حاسبات ومعلومات المنصورة, Computer Vision, YOLO, Python Developer, C++, Deep Learning, الذكاء الاصطناعي, ODESDA, DEPI, رواد مصر الرقمية, CAT Reloaded, Freelance ML Engineer',
   authors: [{ name: 'Mohamed Wageh' }] ,
    icons: {
-    icon: "/icon.png",
+    icon: "/wagehii.png",
   },
 };
 export default function RootLayout({
